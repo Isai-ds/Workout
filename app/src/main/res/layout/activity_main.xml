@@ -19,9 +19,9 @@
             android:layout_height="match_parent"
             tools:layout="@android:layout/simple_list_item_1"/>
 
-    <fragment
+    <FrameLayout
         class="com.example.xmz0426.workout.WorkoutDetailFragment"
-        android:id="@+id/detail_frag"
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_weight="3"
         android:layout_height="match_parent"
