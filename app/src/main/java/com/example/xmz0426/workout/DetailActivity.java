@@ -1,8 +1,10 @@
 package com.example.xmz0426.workout;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
+import android.widget.ScrollView;
 
 public class DetailActivity extends ActionBarActivity {
     public static final String EXTRA_WORKOUT_ID = "id";
