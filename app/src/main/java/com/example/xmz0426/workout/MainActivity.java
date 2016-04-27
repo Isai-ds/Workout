@@ -1,10 +1,12 @@
 package com.example.xmz0426.workout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends ActionBarActivity implements WorkoutListFragment.WorkoutListListener {
 
@@ -38,13 +40,20 @@ public class MainActivity extends ActionBarActivity implements WorkoutListFragme
 
     @Override
     public void itemClicked(long id) {
-        WorkoutDetailFragment details = new WorkoutDetailFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        details.setWorkout(id);
-        ft.replace(R.id.fragment_container,details);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+        View fragmentContainer = findViewById(R.id.fragment_container);
+        if (fragmentContainer!=null) {
+            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            details.setWorkout(id);
+            ft.replace(R.id.fragment_container, details);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+        }else{
+            Intent detailFragment = new Intent(this,DetailActivity.class);
+            detailFragment.putExtra(DetailActivity.EXTRA_WORKOUT_ID,(int)id);
+            startActivity(detailFragment);
+        }
 
     }
 }
